@@ -21,6 +21,6 @@ const proto = grpc.loadPackageDefinition(packageDefinition);
 
 const server = new grpc.Server();
 
-server.addService(proto.UserService.service, implementation);
-server.bind('0.0.0.0:3334', grpc.ServerCredentials.createInsecure());
+server.addService(proto.PurchaseService.service, implementation);
+server.bind('0.0.0.0:3335', grpc.ServerCredentials.createInsecure());
 server.start();

@@ -2,11 +2,9 @@ const UserService = require('../services/UserService');
 
 class SessionController {
   async store(req, res) {
-    const { email, password } = req.body;
-
     try {
       const response = await UserService.loginUser({
-        user: { email, password },
+        user: req.body,
       });
   
       return res.json(response);

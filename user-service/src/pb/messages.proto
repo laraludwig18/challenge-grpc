@@ -1,10 +1,15 @@
 syntax = "proto3";
 
-message User {
+message UserDTO {
   string id = 1;
   string email = 2;
   string username = 3;
-  string password = 4;
+}
+
+message UserForm {
+  string email = 1;
+  string username = 2;
+  string password = 3;
 }
 
 message GetUserByIdRequest {
@@ -12,11 +17,11 @@ message GetUserByIdRequest {
 }
 
 message RegisterUserRequest {
-  User user = 1;
+  UserForm user = 1;
 }
 
 message LoginUserRequest {
-  User user = 1;
+  UserForm user = 1;
 }
 
 message LoginResponse {
@@ -24,8 +29,7 @@ message LoginResponse {
 }
 
 message UserResponse {
-  User user = 1;
-  string error = 2;
+  UserDTO user = 1;
 }
 
 message AuthenticationRequest {

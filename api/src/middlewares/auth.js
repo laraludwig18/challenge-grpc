@@ -6,12 +6,10 @@ module.exports = async (req, res, next) => {
       token: req.headers.authorization,
     });
 
-    if (response.error) throw new Error(response.error);
-
     req.userId = response.user.id;
 
     next();
-  } catch ({ message }) {
-    return res.status(401).json({ error: message });
+  } catch (err) {
+    return res.status(err.code || 500).json({ message: err.details || 'Internal server error' });
   }
 };

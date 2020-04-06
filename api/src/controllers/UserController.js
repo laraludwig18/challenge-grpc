@@ -5,20 +5,20 @@ class UserController {
     const { params } = req;
 
     try {
-      const { user: { id, email, username } } = await UserService.getUserById({ ...params });
+      const { user } = await UserService.getUserById({ ...params });
 
-      return res.json({ user: { id, email, username } });
+      return res.json({ user });
     } catch (err) {
       return res.status(err.code || 500).json({ message: err.details || "Internal server error" });
     }
   }
 
   async store(req, res) {
-    const { user: { id, email, username } } = await UserService.registerUser({
+    const { user } = await UserService.registerUser({
       user: req.body,
     });
 
-    return res.json({ user: { id, email, username } });
+    return res.json({ user });
   }
 }
 
